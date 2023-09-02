@@ -1,0 +1,17 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "New Food delivery App",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "zwigy"
+  ],
+  "author": "Anupam",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
