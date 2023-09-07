@@ -2,7 +2,6 @@
   "name": "food-app",
   "version": "1.0.0",
   "description": "New Food delivery App",
-  "main": "App.js",
   "source": "index.html",
   "browserslist": "last 3 versions",
   "scripts": {
@@ -19,6 +18,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@swc/helpers": "^0.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
