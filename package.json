@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "New Food delivery App",
   "main": "App.js",
+  "source": "index.html",
+  "browserslist": "last 3 versions",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html"
   },
   "keywords": [
-    "zwigy"
+    "zwiggy"
   ],
   "author": "Anupam",
   "license": "ISC",
