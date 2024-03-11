@@ -87,3 +87,11 @@
   border-radius: 5px;
   background-color: lightgray;
 }
+
+.res-menu {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}

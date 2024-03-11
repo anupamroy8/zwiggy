@@ -3,6 +3,6 @@ export const CDN_URL =
 
 export const LOGO_URL = "https://media.istockphoto.com/id/1218437637/vector/food-point-logo-design.jpg?s=170667a&w=0&k=20&c=WcL0d3bOWCJUxoQ24Mx17S5DwboY3a2fGlGv3yBUdVw="
 
-export const RES_LIST = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true"
+export const RES_LIST = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true/"
 
 export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.572646&lng=88.36389500000001&restaurantId="

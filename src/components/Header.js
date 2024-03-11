@@ -11,10 +11,10 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="logo-container">
+      <Link to={"/"} className="logo-container">
         <img className="logo" src={LOGO_URL} alt="app logo" />
         <h1 className="logo-name">Zwiggy</h1>
-      </div>
+      </Link>
       <div className="nav-items">
         <ul>
           <li>
