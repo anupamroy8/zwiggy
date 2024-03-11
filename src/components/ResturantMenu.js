@@ -4,24 +4,32 @@ import Shimmer from "./Shimmer";
 import { MENU_API, CDN_URL } from "../../utils/constants";
 
 const RestaurantMenu = () => {
-  [resMenu, setResMenu] = useState(null);
+  const [resMenu, setResMenu] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const { resId } = useParams();
+
   const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
-    const json = await data.json();
-    setResMenu(json);
+    try {
+      const data = await fetch(MENU_API + resId);
+      const json = await data.json();
+      setResMenu(json);
+    } catch (error) {
+      setErrorMessage("Error fetching menu data. Please try again later.");
+      console.error("Error fetching menu data:", error);
+    }
   };
 
   if (resMenu === null) return <Shimmer />;
+  if (errorMessage) return <div>{errorMessage}</div>;
 
   console.log(resMenu?.data?.cards[2]?.card?.card?.info);
-
   console.log(resMenu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR);
+
   const {
     name,
     locality,
@@ -32,7 +40,7 @@ const RestaurantMenu = () => {
 
   const arrayOfCards =
     resMenu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
-  //
+
   const itemCards = [];
   {
     arrayOfCards.forEach((card) => {
@@ -50,8 +58,7 @@ const RestaurantMenu = () => {
         <h1>{name}</h1>
         <h2>{locality}</h2>
         <h3>
-          {cuisines.length > 0 ? cuisines.join(", ") : "N/A"} -{" "}
-          {costForTwoMessage}
+          {cuisines.length > 0 ? cuisines.join(", ") : "N/A"} - {costForTwoMessage}
         </h3>
         <h2>Menu</h2>
         <ul>
