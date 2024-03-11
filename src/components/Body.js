@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import restaurantsList from "../../utils/data";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
+import { RES_LIST } from "../../utils/constants";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -18,7 +19,6 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&is-seo-homepage-enabled=true"
     );
     const json = await data.json();
-    console.log(json.data.cards);
     const arrayOfCards = json.data.cards;
     const restaurant_list = "restaurant_grid_listing";
 
