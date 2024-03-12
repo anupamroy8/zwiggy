@@ -2,33 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { MENU_API, CDN_URL } from "../../utils/constants";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
   const { resId } = useParams();
 
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(MENU_API + resId);
-      const json = await data.json();
-      setResMenu(json);
-    } catch (error) {
-      setErrorMessage("Error fetching menu data. Please try again later.");
-      console.error("Error fetching menu data:", error);
-    }
-  };
+  const resInfo = useRestaurantMenu(resId);
 
-  if (resMenu === null) return <Shimmer />;
-  if (errorMessage) return <div>{errorMessage}</div>;
+  if (resInfo === null) return <Shimmer />;
 
-  console.log(resMenu?.data?.cards[2]?.card?.card?.info);
-  console.log(resMenu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR);
+  console.log(resInfo?.data?.cards[2]?.card?.card?.info);
+  console.log(resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR);
 
   const {
     name,
@@ -36,10 +20,10 @@ const RestaurantMenu = () => {
     cuisines = [],
     costForTwoMessage,
     cloudinaryImageId,
-  } = resMenu?.data?.cards[2]?.card?.card?.info || {};
+  } = resInfo?.data?.cards[2]?.card?.card?.info || {};
 
   const arrayOfCards =
-    resMenu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
+    resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
 
   const itemCards = [];
   {
@@ -58,7 +42,8 @@ const RestaurantMenu = () => {
         <h1>{name}</h1>
         <h2>{locality}</h2>
         <h3>
-          {cuisines.length > 0 ? cuisines.join(", ") : "N/A"} - {costForTwoMessage}
+          {cuisines.length > 0 ? cuisines.join(", ") : "N/A"} -{" "}
+          {costForTwoMessage}
         </h3>
         <h2>Menu</h2>
         <ul>
