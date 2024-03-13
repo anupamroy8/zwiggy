@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { RES_LIST } from "../../utils/constants";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -37,6 +38,11 @@ const Body = () => {
     );
     setFilteredResturants(filteredRes);
   }
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return <h1>Please check you internet connection...</h1>;
 
   return resList.length === 0 ? (
     <Shimmer />

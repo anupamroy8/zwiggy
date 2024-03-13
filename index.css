@@ -89,7 +89,10 @@
 }
 
 .res-menu {
+  padding: 20px;
+  border: 1px solid;
   display: flex;
+  justify-content: space-between;
 }
 
 a {
