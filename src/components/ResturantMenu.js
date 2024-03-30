@@ -11,20 +11,18 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
-  console.log(resInfo?.data?.cards[2]?.card?.card?.info);
-  console.log(resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR);
-
   const {
     name,
     locality,
     cuisines = [],
     costForTwoMessage,
     cloudinaryImageId,
-  } = resInfo?.data?.cards[2]?.card?.card?.info || {};
+  } = resInfo?.cards[2]?.card?.card?.info || {};
 
   const arrayOfCards =
-    resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
+    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards || [];
 
+  console.log(arrayOfCards, "arrayOfCards");
   const itemCards = [];
   {
     arrayOfCards.forEach((card) => {
@@ -34,7 +32,7 @@ const RestaurantMenu = () => {
     });
   }
   const allItems = itemCards.flat();
-  console.log(allItems);
+  console.log(itemCards);
 
   return (
     <div className="res-menu">
